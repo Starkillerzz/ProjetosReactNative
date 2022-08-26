@@ -1,0 +1,9 @@
+react native web. 
+
+No terminal:
+
+npx create-expo-app (nome do projeto)
+cd (nome do projeto)
+npm run web
+instalar as dependencias necessárias
+npm run web novamente
