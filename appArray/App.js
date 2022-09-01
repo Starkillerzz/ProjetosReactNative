@@ -10,17 +10,18 @@ const [carro, setCarro] = useState([''])
 const [erro, setErro] = useState('')
 
 const addcarro = ()=>{
-  if(Text == ''){
-    setErro ('Insira um texto')
+  if(text == ''){
+    setErro ('Insira um texto!')
   }else{
     setCarro((c) => [...c, text])
     setText('')
+    setErro('')
   }
 }
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>LISTA DE FRUTAS <hr></hr></Text>
+      <Text style={styles.text}>LISTA DE CARROS <hr></hr></Text>
       <TextInput 
           style={styles.input}
           placeholder="Insira um carro"
@@ -28,6 +29,7 @@ const addcarro = ()=>{
           value={text}
       
       ></TextInput>
+      <Text>{erro}</Text>
       <TouchableOpacity
         onPress={addcarro}
         style={styles.button}
