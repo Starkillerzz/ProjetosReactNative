@@ -7,3 +7,6 @@ cd (nome do projeto)
 npm run web
 instalar as dependencias necessárias
 npm run web novamente
+
+start json server
+npx json-server --watch .\appNavigation\src\dados\db.json

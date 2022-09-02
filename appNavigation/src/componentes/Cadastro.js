@@ -8,35 +8,53 @@ export default function Cadastro() {
     const [fone, setFone] = useState('');
     const [msg, setMsg] = useState('');
 
-    function salvar() {
+    function callSave() {
         if (dadosValidos()) {
-            var contato = {
-                nome: nome,
-                email: email,
-                fone: fone
-            }
-            console.warn(contato)
             setMsg('')
+            save()
         }
 
     }
 
-
+    function limpar() {
+        setNome('')
+        setEmail('')
+        setFone('')
+    }
+    function save() {
+        fetch('http://localhost:3000/contatos',
+            {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nome: nome,
+                    fone: fone,
+                    email: email
+                })
+            }
+        )
+            .then(() => { setMsg('Registro inserido com sucesso') })
+            .then(() => limpar())
+            .catch(() => { setMsg("Registro não foi inserido") })
+    }
     function dadosValidos() {
         if (nome == '') {
             setMsg('O nome deve ser informado!')
             return false
-        }else if(email == ''){
+        } else if (email == '') {
             setMsg('O email deve ser informado!')
             return false
-        }else if(fone == ''){
+        } else if (fone == '') {
             setMsg('O fone deve ser informado!')
             return false
         }
         return true
     }
     return (
-        <View style={{flex: 1}} >
+        <View style={{ flex: 1 }} >
             <View style={styles.container}>
                 <Text style={styles.text}>Tela de Cadastro</Text>
 
@@ -45,7 +63,7 @@ export default function Cadastro() {
                     placeholder="Informe nome"
                     value={nome}
                     onChangeText={setNome} />
-                {(msg.search('nome') > -1) ? <Text style={styles.mensagem}>{msg}</Text> : ''}
+                {(msg.search('nome') > -1) ? <Text style={styles.mensagem}>{msg}</Text> : null}
 
                 <TextInput
                     placeholder="Informe email"
@@ -53,21 +71,22 @@ export default function Cadastro() {
                     value={email}
                     onChangeText={setEmail} />
 
-                {(msg.search('email') > -1) ? <Text style={styles.mensagem}>{msg}</Text> : ''}
+                {(msg.search('email') > -1) ? <Text style={styles.mensagem}>{msg}</Text> : null}
 
                 <TextInput
                     placeholder="Informe fone"
                     style={styles.input}
                     value={fone}
                     onChangeText={setFone} />
-                {(msg.search('fone') > -1) ? <Text style={styles.mensagem}>{msg}</Text> : ''}
+                {(msg.search('fone') > -1) ? <Text style={styles.mensagem}>{msg}</Text> : null}
 
                 <TouchableOpacity style={styles.button}
-                    onPress={salvar}>
+                    onPress={callSave}>
                     <Text>Gravar</Text>
                 </TouchableOpacity>
+                {(msg.search('Registro') > -1) ? <Text style={styles.msg}>{msg}</Text> : null}
             </View>
-                <View style={styles.container2}></View>
+            <View style={styles.container2}></View>
         </View>
     )
 }
@@ -103,7 +122,7 @@ const styles = StyleSheet.create({
         color: 'purple',
         fontSize: 50
     },
-    mensagem:{
+    mensagem: {
         color: 'red',
         fontSize: 15
     },
