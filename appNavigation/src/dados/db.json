@@ -7,22 +7,16 @@
       "id": 1
     },
     {
-      "nome": "teste",
-      "fone": "852",
-      "email": "teste@mail.com",
+      "nome": "joao",
+      "fone": "741",
+      "email": "joao@mail.com",
       "id": 2
     },
     {
-      "nome": "fulano",
-      "fone": "987",
-      "email": "fulano@mail.com",
-      "id": 4
-    },
-    {
-      "nome": "ciclano",
-      "fone": "456789",
-      "email": "ciclano@mail.com",
-      "id": 5
+      "nome": "maria",
+      "fone": "654",
+      "email": "maria@mail.com",
+      "id": 3
     }
   ]
 }

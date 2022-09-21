@@ -14,7 +14,7 @@ const CardContato = (props) => {
                 }
             }
         )
-            .then(() => { setMsg('Registro excluido com sucesso!') })
+            .then(() => window.location.reload())
             .catch(() => { setMsg('Registro não foi excluido') })
     }
     return (
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10
     },
     card: {
-        backgroundColor: 'silver',
+        backgroundColor: 'pink',
         marginVertical: 5,
         paddingVertical: 10,
         paddingHorizontal: 15,
