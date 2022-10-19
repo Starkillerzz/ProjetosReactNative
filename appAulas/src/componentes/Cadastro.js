@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from "react-native";
-import database from '../configuração/firebaseConfig'
+import firebase from '../configuração/firebaseConfig'
+
+const database = firebase.firestore()
 
 export default function Cadastro({navigation}){
     const [nome, setNome] = useState('')
@@ -17,8 +19,8 @@ export default function Cadastro({navigation}){
     }
 
     return(
-        <View>
-            <Text>Tela de Cadastro</Text>
+        <View style={styles.container}>
+            <Text style={styles.text}>Tela de Cadastro</Text>
             <TextInput
             style={styles.input}
             placeholder='insira seu nome'
@@ -50,11 +52,14 @@ export default function Cadastro({navigation}){
 
 const styles = StyleSheet.create({
     input:{
-        borderWidth: 2,
-        borderColor: 'skyblue',
+        borderWidth: 3,
+        borderColor: 'blue',
         width: 200,
         marginTop: 10,
-        alignSelf:'center'
+        alignSelf:'center',
+        borderRadius: 10,
+        padding: 5
+        
     },
     button:{
         borderWidth: 3,
@@ -69,5 +74,19 @@ const styles = StyleSheet.create({
         color: 'blue',
         fontWeight: 'bold',
         alignSelf: 'center'
+    },
+    text:{
+        alignSelf: 'center',
+        fontWeight: 'bold',
+        fontSize: 50,
+        color: 'skyblue'
+    },
+    container:{
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#33A4FF'
+    },
+    inputText:{
+        marginRight: 2
     }
 })
